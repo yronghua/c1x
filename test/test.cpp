@@ -4,6 +4,9 @@
 #include "stdafx.h"
 #include "test_shared_ptr.h"
 #include "test_variable_param.h"
+#include "test_move.h"
+#include "test_template.h"
+
 #include <sstream>
 
 namespace std {
@@ -11,6 +14,12 @@ namespace std {
 	typedef wostringstream tostringstream;
 };
 
+class CTest
+{
+
+};
+
+extern template class TemplateA<CTest>;
 
 std::tstring AddFileSplit(std::tstring file_name, int split_num)
 {
@@ -29,13 +38,24 @@ std::tstring AddFileSplit(std::tstring file_name, int split_num)
 	return std::tstring();
 }
 
+constexpr int get_const(int v) {
+	return v;
+}
+
 int main()
 {
-	std::tstring ret = AddFileSplit(_T("asd2.asdf.log"), 1);
+	//std::tstring ret = AddFileSplit(_T("asd2.asdf.log"), 1);
+	TemplateA<CTest> tempa_test;
+
+	test_move();
 
 	test_shared_ptr();
 
 	test_variable_param();
+
+	int pc_num = 2;
+	//char pc[get_const(pc_num)] = { 0 }; // invalid
+	char pc[get_const(2)] = { 0 };
 
     return 0;
 }

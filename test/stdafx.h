@@ -12,10 +12,13 @@
 #include <string>
 #include <memory>
 #include <iostream>
+#include <vector>
 
 
 #include <atlbase.h>
 #include <tchar.h>
 #include <atlconv.h>
+
+using namespace std;
 
 // TODO:  在此处引用程序需要的其他头文件

@@ -147,7 +147,9 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="test_move.h" />
     <ClInclude Include="test_shared_ptr.h" />
+    <ClInclude Include="test_template.h" />
     <ClInclude Include="test_variable_param.h" />
   </ItemGroup>
   <ItemGroup>

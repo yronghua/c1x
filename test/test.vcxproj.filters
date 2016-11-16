@@ -30,6 +30,12 @@
     <ClInclude Include="test_variable_param.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="test_move.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="test_template.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
