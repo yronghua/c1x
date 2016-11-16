@@ -21,4 +21,20 @@
 
 using namespace std;
 
+
+class CLogHelper
+{
+public:
+    CLogHelper(const char* function) {
+        cout << "----------------------------------" << endl;
+        cout << function << endl;
+    }
+
+    ~CLogHelper() {
+        cout << endl;
+    }
+};
+
+#define LOG_FUNCTION CLogHelper temp_log_function(__FUNCTION__);
+
 // TODO:  在此处引用程序需要的其他头文件

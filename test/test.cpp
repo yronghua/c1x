@@ -6,6 +6,9 @@
 #include "test_variable_param.h"
 #include "test_move.h"
 #include "test_template.h"
+#include "test_override.h"
+#include "test_declare.h"
+#include "test_include.h"
 
 #include <sstream>
 
@@ -42,10 +45,27 @@ constexpr int get_const(int v) {
 	return v;
 }
 
+class CTypeClass
+{
+public:
+    CTypeClass(int i) : i_(i) {}
+    explicit operator bool() {
+        LOG_FUNCTION;
+        return i_ != 0;
+    }
+private:
+    int i_ = 0;
+};
+
+
 int main()
 {
 	//std::tstring ret = AddFileSplit(_T("asd2.asdf.log"), 1);
+    test_override();
+
 	TemplateA<CTest> tempa_test;
+
+    test_template();
 
 	test_move();
 
@@ -56,6 +76,20 @@ int main()
 	int pc_num = 2;
 	//char pc[get_const(pc_num)] = { 0 }; // invalid
 	char pc[get_const(2)] = { 0 };
+
+    test_declare(EnumA::kA1);
+    test_declare(EnumB::kB1);
+
+    CTypeClass type_class(-1);
+    if (type_class) {
+        cout << "type_class is true" << endl;
+    }
+    else {
+        cout << "type-class is false" << endl;
+    }
+
+    //int add_type_class = 1 + type_class; // invalid
+    //cout << "add_type_class:" << add_type_class << endl;
 
     return 0;
 }

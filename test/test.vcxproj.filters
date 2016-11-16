@@ -36,12 +36,24 @@
     <ClInclude Include="test_template.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="test_override.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="test_declare.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="test_include.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test_declare.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

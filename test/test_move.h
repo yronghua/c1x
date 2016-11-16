@@ -61,7 +61,7 @@ CTestMove&& get_test_r(CTestMove* &temp)
 
 void test_move()
 {
-	std::cout << std::endl << __FUNCTION__ << std::endl;
+    LOG_FUNCTION;
 	int i = 1;
 	r_value(i);
 	r_value(std::move(i));

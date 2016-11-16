@@ -13,7 +13,7 @@ struct MyStruct1 : public VariableStruct<int>
 
 void test_variable_param()
 {
-	std::cout << std::endl << __FUNCTION__ << std::endl;
+    LOG_FUNCTION;
 	typedef VariableStruct<int, char*> MyStruct;
 	std::cout << MyStruct::size << std::endl;
 	std::cout << MyStruct1::size << std::endl;
