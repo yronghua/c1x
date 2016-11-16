@@ -88,6 +88,10 @@ int main()
         cout << "type-class is false" << endl;
     }
 
+    while (type_class) {
+        break;
+    }
+
     //int add_type_class = 1 + type_class; // invalid
     //cout << "add_type_class:" << add_type_class << endl;
 
