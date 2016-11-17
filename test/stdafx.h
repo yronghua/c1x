@@ -13,7 +13,7 @@
 #include <memory>
 #include <iostream>
 #include <vector>
-
+#include <functional>
 
 #include <atlbase.h>
 #include <tchar.h>

@@ -19,7 +19,13 @@ namespace std {
 
 class CTest
 {
+	friend void test_for();
+public:
+	CTest() : i_(0) {
 
+	}
+private:
+	int i_;
 };
 
 extern template class TemplateA<CTest>;
@@ -45,6 +51,30 @@ constexpr int get_const(int v) {
 	return v;
 }
 
+void test_for() {
+	int my_array[5] = { 1, 2, 3, 4, 5 };
+	for (int &x : my_array)
+	{
+		x *= 2;
+	}
+
+	CTest *my_array2[2] = { new CTest, new CTest };
+
+	for (CTest *x : my_array2) {
+		cout << x->i_ << endl;
+	}
+	cout << endl;
+}
+
+void test_null_point(char* ptr)
+{
+	cout << __FUNCTION__ << " ptr" << endl;
+}
+
+void test_null_point(int i) {
+	cout << __FUNCTION__ << " int" << endl;
+}
+
 class CTypeClass
 {
 public:
@@ -60,10 +90,13 @@ private:
 
 int main()
 {
+	test_null_point(NULL);
+
 	//std::tstring ret = AddFileSplit(_T("asd2.asdf.log"), 1);
     test_override();
 
 	TemplateA<CTest> tempa_test;
+	test_for();
 
     test_template();
 

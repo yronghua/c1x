@@ -50,7 +50,8 @@ CTestMove&& get_test_r(CTestMove* &temp)
 {
 	temp = new CTestMove;
 	temp->i_ = 2;
-	return std::move(*temp);
+	//return std::move(*temp);
+	return static_cast<CTestMove&&>(*temp);
 	/*
 	CTestMove ret;
 	ret.i_ = 3;
