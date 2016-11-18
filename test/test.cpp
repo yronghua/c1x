@@ -9,6 +9,7 @@
 #include "test_override.h"
 #include "test_declare.h"
 #include "test_include.h"
+#include "test_char.h"
 
 #include <sstream>
 
@@ -87,6 +88,14 @@ private:
     int i_ = 0;
 };
 
+HANDLE g_thread_event = 0;
+
+DWORD WINAPI thread_proc(LPVOID param)
+{
+	WaitForSingleObject(g_thread_event, INFINITE);
+	MessageBoxA(0, 0, 0, 0);
+	return 0;
+}
 
 int main()
 {
@@ -114,7 +123,7 @@ int main()
     test_declare(EnumB::kB1);
 
     CTypeClass type_class(-1);
-    if (type_class) {
+    if (type_class) 
         cout << "type_class is true" << endl;
     }
     else {
@@ -125,9 +134,17 @@ int main()
         break;
     }
 
+    test_char();
+
     //int add_type_class = 1 + type_class; // invalid
     //cout << "add_type_class:" << add_type_class << endl;
 
+	g_thread_event = CreateEvent(0, true, false, 0);
+	::CreateThread(NULL, 0, thread_proc, 0, 0, 0);
+	SetEvent(g_thread_event);
+	CloseHandle(g_thread_event);
+
+	cin.get();
     return 0;
 }
 
