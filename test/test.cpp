@@ -10,6 +10,8 @@
 #include "test_declare.h"
 #include "test_include.h"
 #include "test_char.h"
+#include "test_class.h"
+#include "test_thread.h"
 
 #include <sstream>
 
@@ -93,21 +95,58 @@ HANDLE g_thread_event = 0;
 DWORD WINAPI thread_proc(LPVOID param)
 {
 	WaitForSingleObject(g_thread_event, INFINITE);
-	MessageBoxA(0, 0, 0, 0);
 	return 0;
+}
+
+#define SDK_OPENID_LEN         128   //SDK的openid的长度
+#define SDK_OPENKEY_LEN        256   //SDK的openkey的长度
+#define SDK_QQNICKNAME_LEN     128    //QQ的昵称的长度
+#define SDK_QQHEADURL_LEN      256   //QQ的头像url的长度
+#define MAX_NEW_GAME_COMMAND_DATA_BUFFER_LEN  64 * 1024 //防止过程的管道消息
+#define SDK_RETCODE_GETORDER_URL_FAIL 101 //获取内购订单url失败
+#define SDK_SKEY_COOKIE_LEN    256   // SkeyCookie长度
+
+#pragma pack(1)
+typedef struct tagSDKLOGININFO
+{
+	char   openid[SDK_OPENID_LEN];
+	char   openkey[SDK_OPENKEY_LEN];
+	char   qqnickname[SDK_QQNICKNAME_LEN];
+	DWORD  dwSvrTime;
+	char   cookieSkey[SDK_SKEY_COOKIE_LEN];
+	uint64_t gameVer;
+	uint64_t uin;
+	uint64_t appid;
+}SDKLOGININFO;
+#pragma pack()
+
+std::string GetSDKOpenid()
+{
+	return "abc";
+}
+std::string GetSDKOpenkey()
+{
+	return "asdfsadfsd";
 }
 
 int main()
 {
+	SDKLOGININFO sdklogin = { 0 };
+
+	memcpy_s(&sdklogin.openid, SDK_OPENID_LEN, (GetSDKOpenid()).c_str(), SDK_OPENID_LEN);
+	memcpy_s(&sdklogin.openkey, SDK_OPENKEY_LEN, (GetSDKOpenkey()).c_str(), SDK_OPENKEY_LEN);
+
+	
+
 	test_null_point(NULL);
 
 	//std::tstring ret = AddFileSplit(_T("asd2.asdf.log"), 1);
-    test_override();
+	test_override();
 
 	TemplateA<CTest> tempa_test;
 	test_for();
 
-    test_template();
+	test_template();
 
 	test_move();
 
@@ -119,22 +158,27 @@ int main()
 	//char pc[get_const(pc_num)] = { 0 }; // invalid
 	char pc[get_const(2)] = { 0 };
 
-    test_declare(EnumA::kA1);
-    test_declare(EnumB::kB1);
+	test_declare(EnumA::kA1);
+	test_declare(EnumB::kB1);
 
-    CTypeClass type_class(-1);
-    if (type_class) 
-        cout << "type_class is true" << endl;
-    }
-    else {
-        cout << "type-class is false" << endl;
-    }
+	CTypeClass type_class(-1);
+	if (type_class) {
+		cout << "type_class is true" << endl;
+	}
+	else {
+		//cout << "type-class is false" << endl;
+	}
 
     while (type_class) {
         break;
     }
 
     test_char();
+
+
+	test_class();
+
+	test_thread();
 
     //int add_type_class = 1 + type_class; // invalid
     //cout << "add_type_class:" << add_type_class << endl;
@@ -144,7 +188,27 @@ int main()
 	SetEvent(g_thread_event);
 	CloseHandle(g_thread_event);
 
+	cout << "任意键结束";
 	cin.get();
     return 0;
 }
 
+CSingtonClass& CSingtonClass::GetInstance2()
+{
+	static CSingtonClass * s_c = NULL;
+	if (s_c == NULL)
+	{
+		s_c = new CSingtonClass;
+	}
+	return *s_c;
+}
+
+CSingtonClass* g_c = NULL;
+
+CSingtonClass* GetSington()
+{
+	if (g_c == NULL)
+		g_c = new CSingtonClass;
+
+	return g_c;
+}

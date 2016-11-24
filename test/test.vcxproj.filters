@@ -48,6 +48,12 @@
     <ClInclude Include="test_char.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="test_class.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="test_thread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

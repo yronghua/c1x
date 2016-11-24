@@ -6,6 +6,7 @@ typedef std::weak_ptr<std::wstring> wstr_wptr;
 void test_shared_ptr()
 {
     LOG_FUNCTION;
+
 	wstr_ptr host = std::make_shared<std::wstring>();
 	wstr_wptr whost = host;
 	*host = CA2W("abc");

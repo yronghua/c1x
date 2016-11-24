@@ -148,12 +148,14 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="test_char.h" />
+    <ClInclude Include="test_class.h" />
     <ClInclude Include="test_declare.h" />
     <ClInclude Include="test_include.h" />
     <ClInclude Include="test_move.h" />
     <ClInclude Include="test_override.h" />
     <ClInclude Include="test_shared_ptr.h" />
     <ClInclude Include="test_template.h" />
+    <ClInclude Include="test_thread.h" />
     <ClInclude Include="test_variable_param.h" />
   </ItemGroup>
   <ItemGroup>
