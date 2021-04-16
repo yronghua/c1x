@@ -35,25 +35,25 @@ void test_function()
 	int i = 2;
 	LOG(sz1, sz2, 2);
 
-	tr1::function<void()> f1; // ÎŞ²ÎÊı£¬ÎŞ·µ»ØÖµ
+	tr1::function<void()> f1; // æ— å‚æ•°ï¼Œæ— è¿”å›å€¼
 
 	Foo foo;
 	f1 = tr1::bind(&Foo::methodA, &foo);
-	f1(); // µ÷ÓÃ foo.methodA();
+	f1(); // è°ƒç”¨ foo.methodA();
 	Bar bar;
 	f1 = tr1::bind(&Bar::methodB, &bar);
-	f1(); // µ÷ÓÃ bar.methodB();
+	f1(); // è°ƒç”¨ bar.methodB();
 
 	f1 = tr1::bind(&Foo::methodInt, &foo, 42);
-	f1(); // µ÷ÓÃ foo.methodInt(42);
+	f1(); // è°ƒç”¨ foo.methodInt(42);
 
 	f1 = tr1::bind(&Foo::methodCh, &foo, 'c');
 	f1();
 
-	tr1::function<void(int)> f2; // int ²ÎÊı£¬ÎŞ·µ»ØÖµ
+	tr1::function<void(int)> f2; // int å‚æ•°ï¼Œæ— è¿”å›å€¼
 
 	f2 = tr1::bind(&Foo::methodInt, &foo, tr1::placeholders::_1);
-	f2(53); // µ÷ÓÃ foo.methodInt(53);
+	f2(53); // è°ƒç”¨ foo.methodInt(53);
 
 	f2 = tr1::bind(&Foo::methodCh, &foo, tr1::placeholders::_1);
 	f2('d');

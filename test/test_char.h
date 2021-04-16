@@ -14,18 +14,18 @@ void test_char()
 	wcout.imbue(locale(""));
 	
 
-	char* c = "c »ª i am a utf-8 string.";
-	char* u8 = u8"u8 »ª i am a utf-8 string. \u534e";
-	char16_t *u16 = u"u16 »ª i am a utf-16 string. \u534e";
-	char32_t *u32 = U"u32 »ª i am a utf-32 string. \u534e";
-	wchar_t *wc = L"wc »ª i am a utf-16 string.";
-	std::wstring wstr = L"wstr »ª i am a utf-16 string. \u534e";
+	char* c = "c å i am a utf-8 string.";
+	char* u8 = u8"u8 å i am a utf-8 string. \u534e";
+	char16_t *u16 = u"u16 å i am a utf-16 string. \u534e";
+	char32_t *u32 = U"u32 å i am a utf-32 string. \u534e";
+	wchar_t *wc = L"wc å i am a utf-16 string.";
+	std::wstring wstr = L"wstr å i am a utf-16 string. \u534e";
 
 	cout << c << endl;
 	wcout << wc << endl;
 	wcout << wstr.c_str() << endl;
 	wcout << (wchar_t*)u16 << endl;
-	//cout.imbue(locale("zh_CN.UTF-8")); // ´íÎóÃû³Æ
+	//cout.imbue(locale("zh_CN.UTF-8")); // é”™è¯¯åç§°
 
 	std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
 	cout << u8 << endl;

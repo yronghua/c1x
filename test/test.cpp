@@ -1,4 +1,4 @@
-// test.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// test.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 
 #include "stdafx.h"
@@ -98,13 +98,13 @@ DWORD WINAPI thread_proc(LPVOID param)
 	return 0;
 }
 
-#define SDK_OPENID_LEN         128   //SDKµÄopenidµÄ³¤¶È
-#define SDK_OPENKEY_LEN        256   //SDKµÄopenkeyµÄ³¤¶È
-#define SDK_QQNICKNAME_LEN     128    //QQµÄêÇ³ÆµÄ³¤¶È
-#define SDK_QQHEADURL_LEN      256   //QQµÄÍ·ÏñurlµÄ³¤¶È
-#define MAX_NEW_GAME_COMMAND_DATA_BUFFER_LEN  64 * 1024 //·ÀÖ¹¹ı³ÌµÄ¹ÜµÀÏûÏ¢
-#define SDK_RETCODE_GETORDER_URL_FAIL 101 //»ñÈ¡ÄÚ¹º¶©µ¥urlÊ§°Ü
-#define SDK_SKEY_COOKIE_LEN    256   // SkeyCookie³¤¶È
+#define SDK_OPENID_LEN         128   //SDKçš„openidçš„é•¿åº¦
+#define SDK_OPENKEY_LEN        256   //SDKçš„openkeyçš„é•¿åº¦
+#define SDK_QQNICKNAME_LEN     128    //QQçš„æ˜µç§°çš„é•¿åº¦
+#define SDK_QQHEADURL_LEN      256   //QQçš„å¤´åƒurlçš„é•¿åº¦
+#define MAX_NEW_GAME_COMMAND_DATA_BUFFER_LEN  64 * 1024 //é˜²æ­¢è¿‡ç¨‹çš„ç®¡é“æ¶ˆæ¯
+#define SDK_RETCODE_GETORDER_URL_FAIL 101 //è·å–å†…è´­è®¢å•urlå¤±è´¥
+#define SDK_SKEY_COOKIE_LEN    256   // SkeyCookieé•¿åº¦
 
 #pragma pack(1)
 typedef struct tagSDKLOGININFO
@@ -188,7 +188,7 @@ int main()
 	SetEvent(g_thread_event);
 	CloseHandle(g_thread_event);
 
-	cout << "ÈÎÒâ¼ü½áÊø";
+	cout << "ä»»æ„é”®ç»“æŸ";
 	cin.get();
     return 0;
 }
